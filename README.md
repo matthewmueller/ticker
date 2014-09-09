@@ -1,7 +1,6 @@
 # ticker #
 
-A module for running animation and game loops with
-[browserify](http://browserify.org/).
+A module for running animation and game loops
 
 You've probably heard of
 [`requestAnimationFrame`](http://caniuse.com/#feat=requestanimationframe): a
@@ -22,12 +21,12 @@ speeding it up or slowing it down in response to performance,
 ## Installation ##
 
 ``` bash
-npm install ticker
+component install matthewmueller/ticker
 ```
 
 ## Usage ##
 
-**ticker = require('ticker')(element, framerate, skips)**
+**ticker = require('ticker')(framerate, skips)**
 
 Creates a new ticker instance.
 
@@ -52,13 +51,15 @@ var ticker = require('ticker')
   , x = 0
   , y = 0
 
-ticker(window, 60).on('tick', function() {
-  x += Math.round(Math.random()*2-1)*10
-  y += Math.round(Math.random()*2-1)*10
-}).on('draw', function() {
-  ctx.fillStyle = 'black'
-  ctx.fillRect(0, 0, canvas.width, canvas.height)
-  ctx.fillStyle = 'white'
-  ctx.fillRect(x, y, 10, 10)
-})
+ticker()
+  .on('tick', function() {
+    x += Math.round(Math.random()*2-1)*10
+    y += Math.round(Math.random()*2-1)*10
+  })
+  .on('draw', function() {
+    ctx.fillStyle = 'black'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = 'white'
+    ctx.fillRect(x, y, 10, 10)
+  })
 ```

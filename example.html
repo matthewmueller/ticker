@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>ticker component</title>
+</head>
+<body>
+  <h1>ticker component</h1>
+  <script src="../build/build.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var ticker = require('ticker')
+      , canvas = document.createElement('canvas')
+      , ctx = canvas.getContext('2d')
+      , x = 0
+      , y = 0
+
+    ticker()
+      .on('tick', function() {
+        x += Math.round(Math.random()*2-1)*10
+        y += Math.round(Math.random()*2-1)*10
+      })
+      .on('draw', function() {
+        ctx.fillStyle = 'black'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = 'white'
+        ctx.fillRect(x, y, 10, 10)
+      })
+
+    document.body.appendChild(canvas);
+
+  </script>
+</body>
+</html>
